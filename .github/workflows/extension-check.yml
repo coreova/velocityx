@@ -1,0 +1,141 @@
+name: Extension Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate extension files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate manifest, locales, assets, and links
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const root = process.cwd();
+          const readJson = (file) => {
+            try {
+              return JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
+            } catch (error) {
+              throw new Error(`${file} is not valid JSON: ${error.message}`);
+            }
+          };
+
+          const fail = (message) => {
+            console.error(message);
+            process.exitCode = 1;
+          };
+
+          const manifest = readJson('manifest.json');
+          const expectedPermissions = ['storage', 'tabs', 'scripting'];
+          const actualPermissions = manifest.permissions || [];
+          if (JSON.stringify(actualPermissions) !== JSON.stringify(expectedPermissions)) {
+            fail(`Manifest permissions changed: ${JSON.stringify(actualPermissions)}`);
+          }
+
+          if (manifest.author !== 'Coreova') {
+            fail(`Manifest author should be Coreova, got ${manifest.author}`);
+          }
+
+          if (manifest.homepage_url !== 'https://coreova.github.io/') {
+            fail(`Manifest homepage_url is wrong: ${manifest.homepage_url}`);
+          }
+
+          const licenseText = fs.readFileSync(path.join(root, 'LICENSE'), 'utf8');
+          if (!licenseText.includes('Copyright (c) 2026 Coreova')) {
+            fail('LICENSE should use Coreova as the 2026 MIT copyright holder.');
+          }
+          if (licenseText.includes('Copyright (c) 2026 Maruf Ahmed Limon')) {
+            fail('LICENSE still contains the old individual copyright holder line.');
+          }
+
+          const authorsText = fs.readFileSync(path.join(root, 'AUTHORS.md'), 'utf8');
+          if (!authorsText.includes('Coreova - public publisher, project maintainer, and MIT license holder.')) {
+            fail('AUTHORS.md should document Coreova publisher, maintainer, and license-holder attribution.');
+          }
+          if (!authorsText.includes('Maruf Ahmed Limon - original creator of VelocityX.')) {
+            fail('AUTHORS.md should preserve Maruf Ahmed Limon creator attribution.');
+          }
+
+          const iconPaths = [
+            ...Object.values(manifest.icons || {}),
+            ...Object.values(manifest.action?.default_icon || {})
+          ];
+          for (const icon of iconPaths) {
+            if (!fs.existsSync(path.join(root, icon))) {
+              fail(`Missing icon file referenced by manifest: ${icon}`);
+            }
+          }
+
+          const localeRoot = path.join(root, '_locales');
+          for (const locale of fs.readdirSync(localeRoot)) {
+            const file = path.join('_locales', locale, 'messages.json');
+            const messages = readJson(file);
+            for (const [key, value] of Object.entries(messages)) {
+              if (!value || typeof value.message !== 'string') {
+                fail(`${file} has invalid message entry: ${key}`);
+              }
+            }
+          }
+
+          const banned = ['github.com', ['maruf', 'ahmed', 'limon'].join(''), 'velocityx'].join('/');
+          const scanRoots = [
+            'manifest.json',
+            'README.md',
+            'PRIVACY_POLICY.md',
+            'AUTHORS.md',
+            'CONTRIBUTING.md',
+            'CODE_OF_CONDUCT.md',
+            'SECURITY.md',
+            'SUPPORT.md',
+            'GOVERNANCE.md',
+            'CHANGELOG.md',
+            '.github',
+            'devtools',
+            'docs',
+            'options',
+            'popup',
+            'shared',
+            '_locales'
+          ];
+          const ignoredFiles = new Set(['VelocityX.zip']);
+          const ignoredDirs = new Set(['.git', 'node_modules', 'dist', 'build', 'release']);
+          const binaryExts = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico', '.zip', '.crx', '.pem']);
+          const scanFile = (file) => {
+            if (ignoredFiles.has(path.basename(file))) return;
+            if (binaryExts.has(path.extname(file).toLowerCase())) return;
+            const stat = fs.statSync(file);
+            if (!stat.isFile()) return;
+            const text = fs.readFileSync(file, 'utf8');
+            if (text.includes(banned)) {
+              fail(`Banned old repository link found in ${path.relative(root, file)}`);
+            }
+          };
+
+          const walk = (dir) => {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory() && !ignoredDirs.has(entry.name)) walk(full);
+              else scanFile(full);
+            }
+          };
+
+          for (const item of scanRoots) {
+            const full = path.join(root, item);
+            if (!fs.existsSync(full)) continue;
+            if (fs.statSync(full).isDirectory()) walk(full);
+            else scanFile(full);
+          }
+
+          if (process.exitCode) process.exit(process.exitCode);
+          console.log('VelocityX extension check passed.');
+          NODE

@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest a focused VelocityX improvement.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Please describe the workflow and user benefit before proposing implementation details.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or workflow
+      placeholder: "When watching..."
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Useful outcome
+      placeholder: "VelocityX should help by..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Popup
+        - Options
+        - Overlay
+        - Shortcuts
+        - Site rules
+        - Silence Skip
+        - Analytics
+        - DevTools
+        - Documentation
+        - Other
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints
+      options:
+        - label: This should not require new browser permissions unless clearly justified.
+        - label: This should not add telemetry, tracking, or remote scripts.
