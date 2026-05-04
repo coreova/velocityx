@@ -1,0 +1,61 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.suo
+*.user
+*.userossc
+*.sln.docstates
+*.swp
+*.swo
+*~
+.history/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+!.env.sample
+*.local
+
+# Dependencies and caches
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.parcel-cache/
+.cache/
+.tmp/
+tmp/
+temp/
+
+# Test and coverage output
+coverage/
+.nyc_output/
+
+# Build and packaging output
+dist/
+build/
+release/
+web-ext-artifacts/
+*.zip
+*.crx
+*.pem
