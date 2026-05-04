@@ -1,0 +1,139 @@
+:root {
+  color-scheme: dark;
+  --bg: #070a16;
+  --card: #101623;
+  --card-2: #151c2b;
+  --line: rgba(248, 250, 252, 0.12);
+  --text: #f8fafc;
+  --muted: #c7d2e4;
+  --quiet: #8fa1b8;
+  --accent: #22e6c8;
+  --accent-2: #3a5bff;
+  --accent-text: #b8fff4;
+  --accent-soft: rgba(34, 230, 200, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    linear-gradient(180deg, #0a0f1f 0%, var(--bg) 100%);
+  color: var(--text);
+  font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.shell {
+  padding: 18px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  margin: 2px 0 0;
+  font-size: 26px;
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  background: var(--card-2);
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+}
+
+.btn:hover {
+  border-color: rgba(34, 230, 200, 0.42);
+  background: var(--accent-soft);
+}
+
+.btn.primary {
+  background: #101623;
+  border-color: rgba(34, 230, 200, 0.34);
+  color: var(--accent-text);
+  font-weight: 700;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.summary-card,
+.panel-block {
+  background: rgba(17, 22, 32, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+}
+
+.summary-card {
+  padding: 14px 16px;
+}
+
+.summary-label {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.summary-value {
+  font-size: 24px;
+  color: var(--text);
+}
+
+.panel-block {
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.panel-block h2 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #0a0f1f;
+  border: 1px solid rgba(248, 250, 252, 0.12);
+  border-radius: 8px;
+  color: #c7d2e4;
+  padding: 12px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    flex-direction: column;
+  }
+}

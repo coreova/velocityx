@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="devtoolsPageTitle">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VelocityX DevTools</title>
+<link rel="stylesheet" href="panel.css">
+<link rel="icon" href="../icons/icon16.png" type="image/png">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow" data-i18n="extShortName">VelocityX</p>
+        <h1 data-i18n="devtoolsHeading">VelocityX Diagnostics</h1>
+      </div>
+      <div class="hero-actions">
+        <button id="refreshSnapshot" class="btn primary" data-i18n="devtoolsRefresh">Refresh Snapshot</button>
+        <button id="openOptions" class="btn" data-i18n="devtoolsOpenOptions">Open Settings</button>
+      </div>
+    </header>
+
+    <section class="summary-grid">
+      <article class="summary-card">
+        <span class="summary-label" data-i18n="devtoolsSummarySettings">Settings</span>
+        <strong class="summary-value" id="summarySettings">0</strong>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label" data-i18n="devtoolsSummaryMedia">Media Nodes</span>
+        <strong class="summary-value" id="summaryMedia">0</strong>
+      </article>
+      <article class="summary-card">
+        <span class="summary-label" data-i18n="devtoolsSummaryControllers">Controllers</span>
+        <strong class="summary-value" id="summaryControllers">0</strong>
+      </article>
+    </section>
+
+    <section class="panel-block">
+      <h2 data-i18n="devtoolsSectionSnapshot">Snapshot</h2>
+      <pre id="snapshotMeta"></pre>
+    </section>
+
+    <section class="panel-block">
+      <h2 data-i18n="devtoolsSectionSettings">Merged Settings</h2>
+      <pre id="settingsDump"></pre>
+    </section>
+
+    <section class="panel-block">
+      <h2 data-i18n="devtoolsSectionPage">Inspected Tab State</h2>
+      <pre id="pageDump" data-i18n="devtoolsNoData">No content-script snapshot is available for this tab yet.</pre>
+    </section>
+  </main>
+
+  <script src="../shared/i18n.js"></script>
+  <script src="panel.js"></script>
+</body>
+</html>

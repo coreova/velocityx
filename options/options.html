@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="optionsPageTitle">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VelocityX Settings</title>
+<link rel="stylesheet" href="options.css">
+<link rel="icon" href="../icons/icon16.png" type="image/png">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img class="s-icon" src="../icons/icon128.png" alt="" width="34" height="34">
+      <div>
+        <div class="s-name">VelocityX</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item active" data-tab="general">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+        General
+      </button>
+      <button class="nav-item" data-tab="shortcuts">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/></svg>
+        Shortcuts
+      </button>
+      <button class="nav-item" data-tab="silence">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        Silence Skip
+      </button>
+      <button class="nav-item" data-tab="siterules">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16A8 8 0 0010 2zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd"/></svg>
+        Site Rules
+      </button>
+      <button class="nav-item" data-tab="analytics">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+        Analytics
+      </button>
+      <button class="nav-item" data-tab="advanced">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        Advanced
+      </button>
+      <button class="nav-item" data-tab="help">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10A8 8 0 112 10a8 8 0 0116 0zm-8-4a2 2 0 00-2 2 1 1 0 102 0h.09a1.41 1.41 0 01.91 2.49l-.65.57A2.5 2.5 0 009.5 13.94V14a1 1 0 102 0v-.06a.5.5 0 01.17-.38l.65-.57A3.41 3.41 0 0010.09 6H10zm0 9a1.25 1.25 0 100 2.5A1.25 1.25 0 0010 15z" clip-rule="evenodd"/></svg>
+        Help
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-profile-card" aria-label="VelocityX publisher links">
+        <div class="sidebar-profile-main">
+          <span class="sidebar-profile-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" role="img">
+              <path d="M48.349 17.279 A22 22 0 1 0 48.349 46.721" fill="none" stroke="#f8fafc" stroke-width="7.8" stroke-linecap="round" shape-rendering="geometricPrecision"/>
+              <circle cx="32" cy="32" r="7.2" fill="#3a5bff"/>
+              <path d="M52.25 26.25 L57.75 32 L52.25 37.75 L46.75 32 Z" fill="#22e6c8"/>
+            </svg>
+          </span>
+          <div class="sidebar-profile-copy">
+            <span class="sidebar-profile-label">Publisher</span>
+            <span class="sidebar-profile-name">Coreova</span>
+          </div>
+        </div>
+        <div class="sidebar-profile-links">
+          <a class="sidebar-icon-link" href="https://coreova.github.io/" target="_blank" rel="noopener noreferrer" title="Open Coreova website" aria-label="Open Coreova website">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.971-9h-2.003c-.093-1.414-.377-2.649-.766-3.556A6.004 6.004 0 0113.971 9zM10 4c.076 0 .232.032.465.262.238.234.497.623.737 1.182.389.907.673 2.142.766 3.556H8.032c.093-1.414.377-2.649.766-3.556.24-.56.5-.948.737-1.182C9.768 4.032 9.924 4 10 4zM6.029 9H4.083a6.004 6.004 0 012.783-4.118C6.412 6.03 6.118 7.454 6.03 9zm2.003 2h3.936c-.093 1.414-.377 2.649-.766 3.556-.24.56-.5.948-.737 1.182-.233.23-.389.262-.465.262-.076 0-.232-.032-.465-.262-.238-.234-.498-.623-.737-1.182-.389-.907-.673-2.142-.766-3.556zm5.939 0c-.089 1.546-.383 2.97-.837 4.118A6.004 6.004 0 0015.917 11h-1.946zm-7.942 0H4.083a6.004 6.004 0 002.783 4.118C6.412 13.97 6.118 12.546 6.03 11z" clip-rule="evenodd"/>
+            </svg>
+            <span>Website</span>
+          </a>
+          <a class="sidebar-icon-link" href="https://github.com/coreova/velocityx" target="_blank" rel="noopener noreferrer" title="Open VelocityX on GitHub" aria-label="Open VelocityX on GitHub">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M10 .6a9.5 9.5 0 00-3 18.52c.48.09.65-.2.65-.46v-1.6c-2.67.58-3.23-1.15-3.23-1.15-.44-1.1-1.08-1.4-1.08-1.4-.88-.6.07-.59.07-.59.97.07 1.48 1 1.48 1 .87 1.48 2.27 1.05 2.82.8.09-.63.34-1.05.62-1.3-2.13-.24-4.37-1.07-4.37-4.75 0-1.05.38-1.91 1-2.58-.1-.25-.43-1.23.1-2.55 0 0 .81-.26 2.65.98a9.2 9.2 0 014.82 0c1.84-1.24 2.65-.98 2.65-.98.53 1.32.2 2.3.1 2.55.62.67 1 1.53 1 2.58 0 3.69-2.24 4.5-4.38 4.74.35.3.66.9.66 1.82v2.7c0 .26.17.55.66.46A9.5 9.5 0 0010 .6z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+    <div id="vx-context-feedback" class="context-feedback" hidden aria-live="polite"></div>
+
+    <!-- ══ GENERAL ══ -->
+    <section class="tab-panel active" id="tab-general">
+      <div class="page-header">
+        <h2 class="page-title">General Settings</h2>
+        <span class="save-msg" id="generalMsg"></span>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Speed Control</h3>
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Default Speed (new tabs start at this speed)</label>
+            <input type="number" id="defaultSpeed" min="0.07" max="16" step="0.05">
+            <span class="hint">Applied when no per-site rule matches</span>
+          </div>
+          <div class="form-field">
+            <label>Speed Step</label>
+            <input type="number" id="speedStep" min="0.05" max="1" step="0.05">
+            <span class="hint" id="speedStepHint">How much each speed shortcut changes speed per press</span>
+          </div>
+          <div class="form-field">
+            <label for="wheelStep">Mouse Wheel Step Size</label>
+            <select id="wheelStep">
+              <option value="0.05">Fine (0.05×)</option>
+              <option value="0.10">Normal (0.10×)</option>
+              <option value="0.25">Coarse (0.25×)</option>
+              <option value="0.50">Large (0.50×)</option>
+            </select>
+            <span class="hint">How much Shift+scroll changes speed per tick</span>
+          </div>
+          <div class="form-field">
+            <label id="skipSecondsLabel">Skip Seconds</label>
+            <input type="number" id="skipSeconds" min="1" max="300" step="1">
+            <span class="hint">Forward/rewind jump amount</span>
+          </div>
+          <div class="form-field">
+            <label id="loopSecondsLabel">Loop Last N Seconds</label>
+            <input type="number" id="loopSeconds" min="5" max="300" step="1">
+            <span class="hint">Default seconds for Loop Last N</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Preset Speeds</h3>
+        <p class="card-desc">Three preset speed slots — each toggles between preset value and 1.0x.</p>
+        <div class="form-grid">
+          <div class="form-field">
+            <label id="preset1SpeedLabel">Preset 1 Speed</label>
+            <input type="number" id="preset1Speed" min="0.1" max="16" step="0.05">
+          </div>
+          <div class="form-field">
+            <label id="preset2SpeedLabel">Preset 2 Speed</label>
+            <input type="number" id="preset2Speed" min="0.1" max="16" step="0.05">
+          </div>
+          <div class="form-field">
+            <label id="preset3SpeedLabel">Preset 3 Speed</label>
+            <input type="number" id="preset3Speed" min="0.1" max="16" step="0.05">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Behavior</h3>
+        <div class="toggle-list">
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span class="toggle-name">Speed Fightback</span>
+              <span class="toggle-desc">Restore speed when a site resets playback rate (YouTube etc.)</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="fightback"><span class="slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span class="toggle-name">Remember Speed</span>
+              <span class="toggle-desc">Persist last-used speed across browser sessions</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="rememberSpeed"><span class="slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span class="toggle-name">Remember Speed Per URL</span>
+              <span class="toggle-desc">Save a different speed for each page URL</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="rememberPerUrl"><span class="slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span class="toggle-name">Control Audio Elements</span>
+              <span class="toggle-desc">When off, VelocityX ignores standalone audio players and background audio</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="controlAudio"><span class="slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span class="toggle-name">Mouse Wheel Speed</span>
+              <span class="toggle-desc">Shift+scroll over video/overlay to change speed</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="mouseWheel"><span class="slider"></span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Overlay</h3>
+        <div class="toggle-list">
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span class="toggle-name">Show Glassmorphism Overlay</span>
+              <span class="toggle-desc">Show the control pill on videos</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="showOverlay"><span class="slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div class="toggle-info">
+              <span class="toggle-name">Keep VX Button After Close</span>
+              <span class="toggle-desc" id="overlayRestoreBadgeDesc">Off = close hides the overlay for this page until refresh or your overlay shortcut.</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="overlayRestoreBadge"><span class="slider"></span></label>
+          </div>
+        </div>
+        <div class="form-field" style="margin-top:14px">
+          <label>Overlay Position</label>
+          <select id="overlayPosition">
+            <option value="top-left">Top Left</option>
+            <option value="top-right">Top Right</option>
+            <option value="top-center">Top Center</option>
+            <option value="bottom-left">Bottom Left</option>
+            <option value="bottom-right">Bottom Right</option>
+            <option value="bottom-center">Bottom Center</option>
+          </select>
+        </div>
+        <div class="form-grid" style="margin-top:14px">
+          <div class="form-field">
+            <label>Overlay Opacity</label>
+            <input type="number" id="overlayOpacity" min="0.15" max="1" step="0.01">
+            <span class="hint">0.15-1.00 transparency for the controller pill</span>
+          </div>
+          <div class="form-field">
+            <label>Overlay Button Size</label>
+            <input type="number" id="overlayButtonSize" min="16" max="34" step="1">
+            <span class="hint">Scales button icons and the restore badge</span>
+          </div>
+        </div>
+        <div class="overlay-note">
+          Keep only the pieces you want. One-button, two-button, or full controller layouts all work.
+        </div>
+        <div class="overlay-parts-grid">
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="decrease"> Slower Button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="speed"> Speed Text</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="increase"> Faster Button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="loop"> Loop Button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="ab"> AB Button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="mark"> Mark Button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="jump"> Jump Button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="pip"> PiP Button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="volDown"> Volume Down button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="volUp"> Volume Up button</label>
+          <label class="overlay-part"><input type="checkbox" data-overlay-part="close"> Close Button</label>
+        </div>
+        <div class="btn-row" style="margin-top:14px">
+          <button class="btn-ghost" type="button" id="resetOverlayPositions">Reset Overlay State</button>
+          <span class="hint">Clears saved restore-button state and any legacy persisted overlay positions.</span>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:16px">
+        <button class="btn-primary" id="saveGeneral">Save General Settings</button>
+        <button class="btn-ghost" type="button" id="resetGeneral">Reset General Settings</button>
+        <span class="hint">Only this page resets. Shortcuts, Silence Skip, Site Rules, Analytics, and Advanced stay untouched.</span>
+      </div>
+    </section>
+
+    <!-- ══ SHORTCUTS ══ -->
+    <section class="tab-panel" id="tab-shortcuts">
+      <div class="page-header">
+        <h2 class="page-title">Keyboard Shortcuts</h2>
+        <span class="save-msg" id="shortcutsMsg"></span>
+      </div>
+
+      <div class="alert-box" id="shortcutConflict" style="display:none"></div>
+      <p class="card-desc shortcut-help">Click any shortcut chip, then press a key. Use <code>Off</code> or <code>Backspace/Delete</code> to disable it. Press <code>Space</code> if you want the real Space key.</p>
+
+      <div class="card">
+        <h3 class="card-title">Speed Control</h3>
+        <div class="shortcut-list">
+          <div class="shortcut-row">
+            <span class="shortcut-name">Faster</span>
+            <span class="shortcut-desc">Increase speed by step</span>
+            <div class="key-capture" tabindex="0" data-key="keyFaster" data-key-label="Faster">D</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Slower</span>
+            <span class="shortcut-desc">Decrease speed by step</span>
+            <div class="key-capture" tabindex="0" data-key="keySlower" data-key-label="Slower">S</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Reset to 1.0×</span>
+            <span class="shortcut-desc">Snap back to normal speed</span>
+            <div class="key-capture" tabindex="0" data-key="keyReset" data-key-label="Reset">R</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Forward Skip</span>
+            <span class="shortcut-desc">Jump forward N seconds</span>
+            <div class="key-capture" tabindex="0" data-key="keyForward" data-key-label="Forward">X</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Rewind Skip</span>
+            <span class="shortcut-desc">Jump backward N seconds</span>
+            <div class="key-capture" tabindex="0" data-key="keyRewind" data-key-label="Rewind">Z</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Toggle Overlay</span>
+            <span class="shortcut-desc">Show/hide the speed overlay</span>
+            <div class="key-capture" tabindex="0" data-key="keyToggle" data-key-label="Toggle">V</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Preset Speeds</h3>
+        <div class="shortcut-list">
+          <div class="shortcut-row">
+            <span class="shortcut-name">Preset 1</span>
+            <span class="shortcut-desc">Toggle preset speed 1</span>
+            <div class="key-capture" tabindex="0" data-key="keyPreset1" data-key-label="Preset1">G</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Preset 2</span>
+            <span class="shortcut-desc">Toggle preset speed 2</span>
+            <div class="key-capture" tabindex="0" data-key="keyPreset2" data-key-label="Preset2">H</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Preset 3</span>
+            <span class="shortcut-desc">Toggle preset speed 3</span>
+            <div class="key-capture" tabindex="0" data-key="keyPreset3" data-key-label="Preset3">N</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Loop, Mark &amp; PiP</h3>
+        <div class="shortcut-list">
+          <div class="shortcut-row">
+            <span class="shortcut-name">Loop Last N</span>
+            <span class="shortcut-desc">Toggle Loop Last N Seconds</span>
+            <div class="key-capture" tabindex="0" data-key="keyLoop" data-key-label="Loop">L</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Mark Position</span>
+            <span class="shortcut-desc">Save current timestamp</span>
+            <div class="key-capture" tabindex="0" data-key="keyMark" data-key-label="Mark">M</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Jump to Marker</span>
+            <span class="shortcut-desc">Jump to mark (press again to return)</span>
+            <div class="key-capture" tabindex="0" data-key="keyJump" data-key-label="Jump">J</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Picture-in-Picture</span>
+            <span class="shortcut-desc">Toggle PiP for the active video</span>
+            <div class="key-capture" tabindex="0" data-key="keyPiP" data-key-label="Picture-in-Picture">P</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Volume Down</span>
+            <span class="shortcut-desc">Lower active video volume</span>
+            <div class="key-capture" tabindex="0" data-key="keyVolumeDown" data-key-label="Volume Down">I</div>
+          </div>
+          <div class="shortcut-row">
+            <span class="shortcut-name">Volume Up</span>
+            <span class="shortcut-desc">Raise active video volume</span>
+            <div class="key-capture" tabindex="0" data-key="keyVolumeUp" data-key-label="Volume Up">U</div>
+          </div>
+        </div>
+        <div class="info-note" id="abLoopInfoNote" style="margin-top:12px">
+          <strong>AB Loop shortcuts:</strong> These actions use your current shortcut settings and can be rebound below.
+        </div>
+        <div class="toggle-row" style="margin-top:14px">
+          <div class="toggle-info">
+            <span class="toggle-name">Exclusive Keyboard Shortcuts</span>
+            <span class="toggle-desc">When VelocityX handles a shortcut, stop it from reaching the page. Reserved browser shortcuts may still win.</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="exclusiveKeys"><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Custom Shortcut Combos</h3>
+        <p class="card-desc">Add modifier-based shortcuts like <code>Shift+L</code> or <code>Ctrl+Alt+P</code>. Use <code>Off</code> or <code>Backspace/Delete</code> to clear a combo without deleting the row.</p>
+        <div id="customShortcutsList" class="custom-shortcut-list"></div>
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn-ghost" id="addCustomShortcut" type="button">Add Shortcut Combo</button>
+          <span class="hint">Great for AB controls, mute, pause, or alternate shortcuts for the same action.</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="saveShortcuts">Save Shortcuts</button>
+        <button class="btn-ghost" id="disableAllShortcuts" type="button">Turn Off All Shortcuts</button>
+        <button class="btn-ghost" id="resetShortcuts">Reset to Defaults</button>
+      </div>
+      <div class="alert-box shortcut-conflict-inline" id="shortcutConflictInline" style="display:none" aria-live="polite"></div>
+    </section>
+
+    <!-- ══ SILENCE SKIP ══ -->
+    <section class="tab-panel" id="tab-silence">
+      <div class="page-header">
+        <h2 class="page-title">Smart Silence Skip™</h2>
+        <span class="save-msg" id="silenceMsg"></span>
+      </div>
+
+      <div class="card">
+        <div class="toggle-row" style="padding:0 0 16px">
+          <div class="toggle-info">
+            <span class="toggle-name">Enable Silence Skip</span>
+            <span class="toggle-desc">Automatically speed up through silent sections of videos</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="silenceSkipFull"><span class="slider"></span></label>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Silence Speed</label>
+            <input type="number" id="silenceSpeed" min="1" max="16" step="0.1">
+            <span class="hint">Speed during detected silence (e.g. 2.0)</span>
+          </div>
+          <div class="form-field">
+            <label>Silence Delay (ms)</label>
+            <input type="number" id="silenceDelay" min="100" max="5000" step="100">
+            <span class="hint">Wait before switching to silence speed</span>
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-top:12px">
+          <label>Silence Threshold: <strong id="thresholdVal">0.020</strong></label>
+          <input type="range" id="silenceThreshold" min="0.001" max="0.1" step="0.001" style="width:100%;margin-top:8px">
+          <span class="hint">Lower = more sensitive. Raise if silence isn't detected on quiet speech.</span>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="saveSilence">Save Silence Settings</button>
+    </section>
+
+    <!-- ══ SITE RULES ══ -->
+    <section class="tab-panel" id="tab-siterules">
+      <div class="page-header">
+        <h2 class="page-title">Per-Site Rules</h2>
+        <span class="save-msg" id="rulesMsg"></span>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Add Rule</h3>
+        <div class="rule-add-row">
+          <input type="text" id="newDomain" placeholder="youtube.com or /^(.+\\.)?coursera\\.org$/i" class="input-text">
+          <input type="number" id="newSpeed" placeholder="1.5" min="0.1" max="16" step="0.1" class="input-num">
+          <button class="btn-primary" id="addRule">Add Speed</button>
+          <button class="btn-danger" id="addDisableRule">Disable Site</button>
+        </div>
+        <div class="form-field" style="margin-top:12px">
+          <label>Optional Page-Level Controller CSS</label>
+          <textarea id="newRuleCSS" class="code-textarea" placeholder=".html5-video-player { margin-top: 28px; }&#10;.ytp-chrome-bottom { opacity: .9 !important; }"></textarea>
+          <span class="hint">Use this when a site needs page CSS tweaks outside VelocityX's Shadow DOM. This CSS only applies when the rule matches.</span>
+        </div>
+        <p class="hint" style="margin-top:8px">Enter a clean hostname like <code>youtube.com</code> or a regex like <code>/^(.+\.)?example\.com$/i</code>. Domain rules automatically cover subdomains, while regex rules check the current hostname and page URL in list order.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Active Rules</h3>
+        <div id="rulesList"></div>
+      </div>
+    </section>
+
+    <!-- ══ ANALYTICS ══ -->
+    <section class="tab-panel" id="tab-analytics">
+      <div class="page-header">
+        <h2 class="page-title">VelocityX Analytics</h2>
+        <span class="save-msg" id="analyticsMsg"></span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">⏱</div>
+          <div class="stat-val" id="weekSavedOpt">—</div>
+          <div class="stat-lbl">Saved This Week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📈</div>
+          <div class="stat-val" id="totalSavedOpt">—</div>
+          <div class="stat-lbl">Total Time Saved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🗓</div>
+          <div class="stat-val" id="installDaysOpt">—</div>
+          <div class="stat-lbl">Days Active</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🚀</div>
+          <div class="stat-val" id="totalSessionsOpt">—</div>
+          <div class="stat-lbl">Total Sessions</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Speed Distribution</h3>
+        <p class="card-desc">How much time you've spent at each speed:</p>
+        <div id="speedChart"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">What You Could Do With Saved Time</h3>
+        <div id="timeEquiv"></div>
+      </div>
+
+      <div class="card analytics-share-card">
+        <div class="share-card-head">
+          <div>
+            <h3 class="card-title">Share Card</h3>
+            <p class="card-desc">Create a polished VelocityX analytics card for X, Reddit, Discord, LinkedIn, or anywhere you want to share progress.</p>
+          </div>
+          <span class="privacy-pill">Local only</span>
+        </div>
+        <div class="share-preview" id="analyticsSharePreview" aria-live="polite">
+          <div>
+            <span class="share-preview-kicker">VelocityX Analytics</span>
+            <strong id="sharePreviewTotal">0s saved</strong>
+            <p id="sharePreviewCaption">Use VelocityX while watching videos to generate a share card.</p>
+          </div>
+          <span class="share-preview-brand">by Coreova</span>
+        </div>
+        <div class="btn-row share-actions">
+          <button class="btn-primary" id="saveShareCard" type="button">Save Share Card</button>
+          <button class="btn-ghost" id="copyShareCaption" type="button">Copy Caption</button>
+          <button class="btn-ghost" id="shareAnalyticsCard" type="button">Share / Post</button>
+        </div>
+        <p class="share-action-status" id="shareActionStatus" hidden aria-live="polite"></p>
+        <p class="hint">Generated locally. No analytics are uploaded.</p>
+      </div>
+
+      <button class="btn-danger-outline" id="resetStats">Reset All Stats</button>
+    </section>
+
+    <!-- ══ ADVANCED ══ -->
+    <section class="tab-panel" id="tab-advanced">
+      <div class="page-header">
+        <h2 class="page-title">Advanced</h2>
+        <span class="save-msg" id="advancedMsg"></span>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Custom Overlay CSS</h3>
+        <p class="card-desc">Customize the VelocityX overlay inside its Shadow DOM. Target selectors like <code>#pill</code>, <code>#spd</code>, <code>#restore</code>, or the legacy helper classes <code>._vxPill</code>, <code>._vxBtn</code>, <code>._vxSpd</code>.</p>
+        <textarea id="customCSS" class="code-textarea" placeholder="/* Example: make overlay bigger */
+#pill { padding: 6px 14px 6px 10px; }
+#spd  { font-size: 14px; }"></textarea>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Import / Export Settings</h3>
+        <p class="card-desc">Backup your settings to a JSON file or restore from a previous backup. Analytics data is not included in the export.</p>
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn-ghost" id="exportSettings">⬇ Export Settings</button>
+          <button class="btn-ghost" id="importSettings">⬆ Import Settings</button>
+          <input type="file" id="importFile" accept=".json" style="display:none">
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Debug Tools</h3>
+        <div class="form-field" style="margin-bottom:16px">
+          <label>Log Level</label>
+          <select id="logLevel">
+            <option value="silent">Silent</option>
+            <option value="error">Errors Only</option>
+            <option value="warn">Warnings</option>
+            <option value="info">Info</option>
+            <option value="debug">Debug</option>
+          </select>
+          <span class="hint">Controls how chatty VelocityX is in DevTools and extension pages.</span>
+        </div>
+        <div class="toggle-row" style="padding:0">
+          <div class="toggle-info">
+            <span class="toggle-name">Enable Console Debug Mode</span>
+            <span class="toggle-desc">Expose <code>vxDebug.*</code> and compatibility alias <code>vscDebug.*</code> in page DevTools for media/controller inspection.</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="debugMode"><span class="slider"></span></label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">About &amp; Security</h3>
+        <div class="meta-list">
+          <div class="meta-row">
+            <span class="meta-label">Version</span>
+            <span class="meta-value">1.0.0</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Publisher</span>
+            <span class="meta-value">Coreova</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">License</span>
+            <span class="meta-value">MIT licensed by Coreova</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Website</span>
+            <a class="inline-link" href="https://coreova.github.io/" target="_blank" rel="noopener noreferrer">coreova.github.io</a>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Source</span>
+            <a class="inline-link" href="https://github.com/coreova/velocityx" target="_blank" rel="noopener noreferrer">github.com/coreova/velocityx</a>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Feedback</span>
+            <a class="inline-link" href="https://github.com/coreova/velocityx/issues" target="_blank" rel="noopener noreferrer">Open an issue or feature request</a>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Storage</span>
+            <span class="meta-value">Settings sync with your Chrome profile when available. Analytics and page-specific runtime state stay local to this browser.</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Code</span>
+            <span class="meta-value">No remote scripts or network fetches are required for core playback control.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-danger">
+        <h3 class="card-title" style="color:var(--red)">Danger Zone</h3>
+        <p class="card-desc">Reset all settings to factory defaults. Your analytics are preserved.</p>
+        <button class="btn-danger" style="margin-top:12px" id="resetAll">Reset All Settings</button>
+      </div>
+
+      <button class="btn-primary" id="saveAdvanced">Save Advanced Settings</button>
+    </section>
+
+    <section class="tab-panel" id="tab-help">
+      <div class="page-header">
+        <h2 class="page-title">Help &amp; FAQ</h2>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Common Questions</h3>
+        <div class="faq-list">
+          <div class="faq-item">
+            <strong>How do regex site rules work?</strong>
+            <p>Write them like <code>/^(.+\\.)?coursera\\.org$/i</code>. VelocityX checks the current hostname first for exact domain rules, then tests regex rules in the order shown on this page.</p>
+          </div>
+          <div class="faq-item">
+            <strong>What is the difference between Custom Overlay CSS and Site Rule CSS?</strong>
+            <p><code>Custom Overlay CSS</code> styles VelocityX inside its Shadow DOM. <code>Site Rule CSS</code> styles the page itself, which helps when a site's own player needs spacing or z-index fixes.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Can I create modifier shortcuts?</strong>
+            <p>Yes. Open <code>Shortcuts &gt; Custom Shortcut Combos</code>, pick an action, then capture any combination with <code>Ctrl</code>, <code>Alt</code>, <code>Shift</code>, or <code>Meta</code>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Support</h3>
+        <div class="meta-list">
+          <div class="meta-row">
+            <span class="meta-label">Guide</span>
+            <span class="meta-value">A full README now ships with the project root, including feature overview, shortcut notes, regex examples, and troubleshooting tips.</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Issues</span>
+            <a class="inline-link" href="https://github.com/coreova/velocityx/issues" target="_blank" rel="noopener noreferrer">github.com/coreova/velocityx/issues</a>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Source</span>
+            <a class="inline-link" href="https://github.com/coreova/velocityx" target="_blank" rel="noopener noreferrer">github.com/coreova/velocityx</a>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Website</span>
+            <a class="inline-link" href="https://coreova.github.io/" target="_blank" rel="noopener noreferrer">coreova.github.io</a>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Publisher</span>
+            <span class="meta-value">Coreova</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">License</span>
+            <span class="meta-value">MIT licensed by Coreova</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="vx-toast"></div>
+<script src="../shared/i18n.js"></script>
+<script src="../shared/settings-defaults.js"></script>
+<script src="../shared/site-rule-engine.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

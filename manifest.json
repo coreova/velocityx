@@ -1,0 +1,80 @@
+{
+  "manifest_version": 3,
+  "minimum_chrome_version": "111",
+  "name": "__MSG_extName__",
+  "short_name": "__MSG_extShortName__",
+  "version": "1.0.0",
+  "description": "__MSG_extDescription__",
+  "author": "Coreova",
+  "homepage_url": "https://coreova.github.io/",
+  "default_locale": "en",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage", "tabs", "scripting"],
+  "incognito": "split",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "24": "icons/icon24.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    },
+    "default_title": "__MSG_actionTitle__"
+  },
+  "devtools_page": "devtools/devtools.html",
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "file:///*"],
+      "js": ["shared/settings-defaults.js", "shared/site-rule-engine.js", "content-bridge.js"],
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_start",
+      "world": "ISOLATED",
+      "exclude_matches": [
+        "https://meet.google.com/*",
+        "https://hangouts.google.com/*"
+      ]
+    },
+    {
+      "matches": ["http://*/*", "https://*/*", "file:///*"],
+      "js": ["inject.js"],
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_start",
+      "world": "MAIN",
+      "exclude_matches": [
+        "https://meet.google.com/*",
+        "https://hangouts.google.com/*"
+      ]
+    },
+    {
+      "matches": ["http://*/*", "https://*/*", "file:///*"],
+      "js": ["shared/settings-defaults.js", "shared/site-rule-engine.js", "content.js"],
+      "all_frames": true,
+      "match_about_blank": true,
+      "run_at": "document_start",
+      "exclude_matches": [
+        "https://meet.google.com/*",
+        "https://hangouts.google.com/*"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

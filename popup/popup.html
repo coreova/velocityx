@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VelocityX</title>
+<link rel="stylesheet" href="popup.css">
+<link rel="icon" href="../icons/icon16.png" type="image/png">
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img class="logo-icon" src="../icons/icon128.png" alt="" width="28" height="28">
+      <span class="logo-text">VelocityX</span>
+    </div>
+    <div class="header-actions">
+      <label class="header-toggle" title="Turn VelocityX on or off instantly">
+        <span class="header-toggle-copy" id="extensionStatus">On</span>
+        <span class="switch">
+          <input type="checkbox" id="extensionEnabled" checked>
+          <span class="slider"></span>
+        </span>
+      </label>
+      <button class="icon-btn" id="openSettings" title="Settings" data-stays-enabled="1">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Speed ring -->
+  <div class="speed-section">
+    <button class="speed-adj" id="decrease" title="Decrease speed (S)">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+    </button>
+    <div class="speed-display">
+      <div class="speed-ring">
+        <svg class="speed-ring-svg" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(58,91,255,.12)" stroke-width="6"/>
+          <circle id="speedArc" cx="50" cy="50" r="42" fill="none" stroke="url(#arcGrad)"
+            stroke-width="6" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="198"
+            transform="rotate(-90 50 50)"/>
+          <defs><linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3a5bff"/><stop offset="100%" stop-color="#22e6c8"/>
+          </linearGradient></defs>
+        </svg>
+        <div class="speed-inner">
+          <span class="speed-val" id="speedVal">1.00</span>
+          <span class="speed-unit">&times;</span>
+        </div>
+      </div>
+    </div>
+    <button class="speed-adj" id="increase" title="Increase speed (D)">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+    </button>
+  </div>
+
+  <div class="quick-presets">
+    <button class="preset user-preset" data-preset-num="1" data-speed="1.8">P1 1.80&times;</button>
+    <button class="preset user-preset" data-preset-num="2" data-speed="1.25">P2 1.25&times;</button>
+    <button class="preset user-preset" data-preset-num="3" data-speed="2.5">P3 2.50&times;</button>
+  </div>
+
+  <!-- Preset speed buttons -->
+  <div class="presets-grid">
+    <button class="preset" data-speed="0.5">0.5&times;</button>
+    <button class="preset" data-speed="0.75">0.75&times;</button>
+    <button class="preset" data-speed="1">1&times;</button>
+    <button class="preset" data-speed="1.25">1.25&times;</button>
+    <button class="preset" data-speed="1.5">1.5&times;</button>
+    <button class="preset" data-speed="1.75">1.75&times;</button>
+    <button class="preset" data-speed="2">2&times;</button>
+    <button class="preset" data-speed="2.5">2.5&times;</button>
+    <button class="preset" data-speed="3">3&times;</button>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Loop Last N Seconds -->
+  <div class="feature-row">
+    <div class="feature-label-wrap">
+      <span class="feature-label">
+        <svg class="t-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+        </svg>
+        Loop Last N Seconds
+      </span>
+      <span class="feature-desc">Loop backward from the point you click it <kbd>L</kbd></span>
+    </div>
+    <div class="feature-actions">
+      <div class="num-wrap">
+        <input class="num-input" id="loopSeconds" type="number" min="5" max="300" step="1" value="10">
+        <span class="num-lbl">s</span>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="loopToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  <div class="feature-status" id="loopNotice">Loop range: 5-300 seconds. If you click early, VelocityX uses the available watched portion.</div>
+
+  <!-- Shortcuts reference -->
+  <div class="shortcuts-grid">
+    <div class="shortcut-group">
+      <span class="shortcut-title">AB Loop</span>
+      <span><kbd>Shift+A</kbd> Set A &nbsp; <kbd>Shift+B</kbd> Set B &nbsp; <kbd>Shift+C</kbd> Clear</span>
+    </div>
+    <div class="shortcut-group">
+      <span class="shortcut-title">Mark &amp; Jump</span>
+      <span><kbd>M</kbd> Mark &nbsp; <kbd>J</kbd> Jump/Return</span>
+    </div>
+    <div class="shortcut-group">
+      <span class="shortcut-title">Presets</span>
+      <span><kbd>G</kbd> P1 &nbsp; <kbd>H</kbd> P2 &nbsp; <kbd>N</kbd> P3</span>
+    </div>
+    <div class="shortcut-group">
+      <span class="shortcut-title">PiP</span>
+      <span><kbd>P</kbd> Toggle picture-in-picture</span>
+    </div>
+  </div>
+
+  <div class="media-card" id="mediaCard" hidden>
+    <div class="media-head">
+      <span class="media-site" id="mediaSite">This tab</span>
+      <span class="media-state" id="mediaState">Idle</span>
+    </div>
+    <div class="media-title" id="mediaTitle">Open a page with a video or audio player.</div>
+    <div class="media-meta" id="mediaMeta">VelocityX will show playback info here when it finds active media.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Toggles -->
+  <div class="toggles">
+    <label class="toggle-row">
+      <div class="toggle-text">
+        <span class="toggle-label">
+          <svg class="t-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          Smart Silence Skip™
+        </span>
+        <span class="toggle-desc">Auto-speed through silent pauses</span>
+      </div>
+      <div class="switch"><input type="checkbox" id="silenceSkip"><span class="slider"></span></div>
+    </label>
+
+    <label class="toggle-row">
+      <div class="toggle-text">
+        <span class="toggle-label">
+          <svg class="t-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"/></svg>
+          Remember Speed
+        </span>
+        <span class="toggle-desc">Persist speed across sessions</span>
+      </div>
+      <div class="switch"><input type="checkbox" id="rememberSpeed"><span class="slider"></span></div>
+    </label>
+
+    <label class="toggle-row">
+      <div class="toggle-text">
+        <span class="toggle-label">
+          <svg class="t-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h5a1 1 0 010 2H6v12h8V9a1 1 0 112 0v7a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm8.293 1.293a1 1 0 011.414 0L18 9.586V6a1 1 0 112 0v6a1 1 0 01-1 1h-6a1 1 0 110-2h3.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          Remember Per URL
+        </span>
+        <span class="toggle-desc">Save a different speed for each page</span>
+      </div>
+      <div class="switch"><input type="checkbox" id="rememberPerUrl"><span class="slider"></span></div>
+    </label>
+
+    <label class="toggle-row">
+      <div class="toggle-text">
+        <span class="toggle-label">
+          <svg class="t-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M3 7a3 3 0 013-3h2a1 1 0 010 2H6a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 110 2H6a3 3 0 01-3-3V7zm8.293-2.707a1 1 0 011.414 0l4 4a.997.997 0 01.083 1.32l-.083.094-4 4a1 1 0 01-1.497-1.32l.083-.094L13.586 10H9a1 1 0 110-2h4.586l-2.293-2.293a1 1 0 010-1.414z"/></svg>
+          Control Audio
+        </span>
+        <span class="toggle-desc">Apply playback controls to standalone audio players too</span>
+      </div>
+      <div class="switch"><input type="checkbox" id="controlAudio"><span class="slider"></span></div>
+    </label>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VelocityX stats -->
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-icon">⏱</div>
+      <div class="stat-body">
+        <span class="stat-val" id="timeSaved">0s</span>
+        <span class="stat-lbl">Saved This Week</span>
+      </div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat">
+      <div class="stat-icon">📈</div>
+      <div class="stat-body">
+        <span class="stat-val" id="totalSaved">0s</span>
+        <span class="stat-lbl">Total Saved</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="full-stats-btn" id="viewStats" data-stays-enabled="1">View Full Analytics &amp; Settings →</button>
+
+  <div class="popup-footer">
+    <span class="popup-footer-copy">VelocityX by Coreova</span>
+    <span class="popup-footer-links" aria-label="Coreova links">
+      <a class="popup-footer-icon-link" href="https://coreova.github.io/" target="_blank" rel="noopener noreferrer" title="Open Coreova website" aria-label="Open Coreova website">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.971-9h-2.003c-.093-1.414-.377-2.649-.766-3.556A6.004 6.004 0 0113.971 9zM10 4c.076 0 .232.032.465.262.238.234.497.623.737 1.182.389.907.673 2.142.766 3.556H8.032c.093-1.414.377-2.649.766-3.556.24-.56.5-.948.737-1.182C9.768 4.032 9.924 4 10 4zM6.029 9H4.083a6.004 6.004 0 012.783-4.118C6.412 6.03 6.118 7.454 6.03 9zm2.003 2h3.936c-.093 1.414-.377 2.649-.766 3.556-.24.56-.5.948-.737 1.182-.233.23-.389.262-.465.262-.076 0-.232-.032-.465-.262-.238-.234-.498-.623-.737-1.182-.389-.907-.673-2.142-.766-3.556zm5.939 0c-.089 1.546-.383 2.97-.837 4.118A6.004 6.004 0 0015.917 11h-1.946zm-7.942 0H4.083a6.004 6.004 0 002.783 4.118C6.412 13.97 6.118 12.546 6.03 11z" clip-rule="evenodd"/>
+        </svg>
+      </a>
+      <a class="popup-footer-icon-link" href="https://github.com/coreova/velocityx" target="_blank" rel="noopener noreferrer" title="Open VelocityX on GitHub" aria-label="Open VelocityX on GitHub">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M10 .6a9.5 9.5 0 00-3 18.52c.48.09.65-.2.65-.46v-1.6c-2.67.58-3.23-1.15-3.23-1.15-.44-1.1-1.08-1.4-1.08-1.4-.88-.6.07-.59.07-.59.97.07 1.48 1 1.48 1 .87 1.48 2.27 1.05 2.82.8.09-.63.34-1.05.62-1.3-2.13-.24-4.37-1.07-4.37-4.75 0-1.05.38-1.91 1-2.58-.1-.25-.43-1.23.1-2.55 0 0 .81-.26 2.65.98a9.2 9.2 0 014.82 0c1.84-1.24 2.65-.98 2.65-.98.53 1.32.2 2.3.1 2.55.62.67 1 1.53 1 2.58 0 3.69-2.24 4.5-4.38 4.74.35.3.66.9.66 1.82v2.7c0 .26.17.55.66.46A9.5 9.5 0 0010 .6z"/>
+        </svg>
+      </a>
+    </span>
+  </div>
+</div>
+<script src="../shared/i18n.js"></script>
+<script src="../shared/settings-defaults.js"></script>
+<script src="../shared/site-rule-engine.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
